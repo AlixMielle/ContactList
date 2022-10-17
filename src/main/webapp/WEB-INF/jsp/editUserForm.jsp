@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.css">
     <script type="text/javascript">
         function clearSearch() {
-            window.location = "${pageContext.request.contextPath}/books/all";
+            window.location = "${pageContext.request.contextPath}/contacts/all";
         }
     </script>
 </head>
@@ -28,54 +28,29 @@
 <div class="container">
     <main>
         <div class="py-5">
-            <h2>Modifiez un contact</h2>
-            <p class="lead">C'est l'occasion de mettre à jour votre carnet d'adresses</p>
+            <h2>Modifiez votre profil</h2>
+            <p class="lead">C'est l'occasion de mettre à jour vos coordonnées</p>
             <hr class="my-1">
         </div>
 
         <div class="row g-3">
             <div class="col-md-7 col-lg-8">
-                <form action="${pageContext.request.contextPath}/contacts/edit/${contact.id}" method="post" enctype="multipart/form-data">
-                    <input type="hidden" name="id" value="${contact.id}">
+                <form action="${pageContext.request.contextPath}/edit/${user.id}" method="post" enctype="multipart/form-data">
+                    <input type="hidden" name="id" value="${user.id}">
                     <div class="row">
                         <div class="col-sm-6">
                             <label for="lastname" class="form-label">Nom</label>
-                            <input type="text" class="form-control" id="lastname" name="lastname" value="${contact.lastname}">
+                            <input type="text" class="form-control" id="lastname" name="lastname" value="${user.lastname}">
                         </div>
                         <div class="col-sm-6 mb-3">
                             <label for="firstname" class="form-label">Prénom</label>
-                            <input type="text" class="form-control" id="firstname" name="firstname" value="${contact.firstname}">
+                            <input type="text" class="form-control" id="firstname" name="firstname" value="${user.firstname}">
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-sm-6">
-                            <label for="email" class="form-label">Email</label>
-                            <input type="email" class="form-control" id="email" name="email" value="${contact.email}">
-                        </div>
-                        <div class="col-sm-6 mb-3">
-                            <label for="mobile" class="form-label">Téléphone</label>
-                            <input type="text" class="form-control" id="mobile" name="mobile" value="${contact.mobile}">
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <label for="dateBirth" class="form-label">Date de naissance</label>
-                            <input type="date" class="form-control" id="dateBirth" name="dateBirth" value="${contact.dateBirth}">
-                        </div>
-                        <div class="col-sm-6 mb-3">
-                            <label for="link" class="form-label">Lien de parenté</label>
-                            <input type="text" class="form-control" id="link" name="link" value="${contact.link}">
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <label for="company" class="form-label">Entreprise</label>
-                            <input type="text" class="form-control" id="company" name="company" value="${contact.company}">
-                        </div>
-                        <div class="col-sm-6 mb-3">
-                            <label for="job" class="form-label">Emploi</label>
-                            <input type="text" class="form-control" id="job" name="job" value="${contact.job}">
+                            <label for="password" class="form-label">Mot de passe</label>
+                            <input type="password" class="form-control" id="password" name="password" value="${user.password}">
                         </div>
                     </div>
                     <%-- Toogle switch --%>
@@ -106,23 +81,8 @@
                             document.getElementById("pictureFile").disabled = this.checked;
                         });
                     </script>
-                    <div class="col-12">
-                        <label for="note" class="form-label">Notes</label>
-                        <div class="input-group">
-                            <textarea class="form-control" id="note" name="note" rows="3">${contact.note}"</textarea>
-                        </div>
-                    </div>
-                    <%--<div class="col-sm-6">
-                        <label for="author" class="form-label">Author</label>
-                        <select class="form-select" id="author" name="authorIds" required="true" multiple>
-                            <option disabled selected>Choose...</option>
-                            <c:forEach items="${authorList}" var="author">
-                                <option value="${author.id}">${author.firstname} ${author.lastname}</option>
-                            </c:forEach>
-                        </select>
-                    </div>--%>
                     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
-                    <button class="btn my-2 text-white" style="background-color: darkslategray" type="submit">Modifier le contact</button>
+                    <button class="btn my-2 text-white" style="background-color: darkslategray" type="submit">Modifier le profil</button>
                     <button class="btn my-2 text-white" style="background-color: darkslategray" type="reset">Annuler</button>
                     <div>
                         <a href="${pageContext.request.contextPath}/contacts/all" style="color: darkslategray">Retour à la liste</a>

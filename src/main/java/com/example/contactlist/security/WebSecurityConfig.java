@@ -35,14 +35,14 @@ public class WebSecurityConfig {
         //Configuration de toutes les urls utilisées
         http
                 .authorizeHttpRequests()
-                .antMatchers("/contacts/all").permitAll()
-                .antMatchers("/contacts/details").permitAll()
-                .antMatchers("/contacts/add").permitAll()
-                .antMatchers("/contacts/edit").permitAll()
-                .antMatchers("/contacts/delete").permitAll()
+                .antMatchers("/contacts/all").authenticated()
+                .antMatchers("/contacts/details").authenticated()
+                .antMatchers("/contacts/add").authenticated()
+                .antMatchers("/contacts/edit").authenticated()
+                .antMatchers("/contacts/delete").authenticated()
                 .antMatchers("/signup").permitAll()
                 //.antMatchers("/api/**").permitAll()
-        // Configuration des autres urls
+        // Configuration des autres urlsS
                 .anyRequest().authenticated()
         //Configuration du login
                 .and()
@@ -80,7 +80,7 @@ public class WebSecurityConfig {
         return new WebSecurityCustomizer() {
             @Override
             public void customize(WebSecurity web) {
-                web.ignoring().antMatchers("/css/**", "/js/**", "/img/**", "/favicon.ico");
+                web.ignoring().antMatchers("/css/**", "/js/**", "/img/**", "/favicon.ico", "/files/**");
             }
         };
     }

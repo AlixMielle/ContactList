@@ -24,12 +24,12 @@
                 <div class="col-sm-4 offset-md-1 py-4">
                         <sec:authorize access="!isAuthenticated()">
                             <form:form action="/signin" method="get">
-                                <button type="submit" class="btn btn-light" style="color: darkslategray">Se connecter</button>
+                                <button type="submit" class="btn btn-sm btn-outline-light">Se connecter</button>
                             </form:form>
                         </sec:authorize>
                         <sec:authorize access="isAuthenticated()">
                             <form:form action="/logout" method="post">
-                                <button type="submit" class="btn btn-light" style="color: darkslategray">Se déconnecter</button>
+                                <button type="submit" class="btn btn-sm btn-outline-light">Se déconnecter</button>
                             </form:form>
                         </sec:authorize>
                 </div>
@@ -46,8 +46,12 @@
                 <div class="col-10">
                     <form action="${pageContext.request.contextPath}/contacts/all" class="navbar-brand d-flex justify-content-between" role="search">
                         <input class="form-control me-2" type="search" name="keyword" value="${keyword}" id="keyword" placeholder="Chercher un contact" aria-label="Search" style="color: darkslategray">
-                        <button class="navbar-toggler" type="submit" style="color: white">Rechercher</button>
-                        <button class="navbar-toggler" type="button" onclick="clearSearch()" style="color: white">Effacer</button>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="btn-group">
+                                <button type="submit" class="btn btn-sm btn-outline-light">Rechercher</button>
+                                <button type="button" class="btn btn-sm btn-outline-light" onclick="clearSearch()">Effacer</button>
+                            </div>
+                        </div>
                     </form>
                 </div>
                 <div class="col-2">
@@ -59,3 +63,5 @@
         </div>
     </div>
 </header>
+<!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>

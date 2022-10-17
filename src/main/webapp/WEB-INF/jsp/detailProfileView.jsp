@@ -8,7 +8,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Contacts | Liste</title>
+    <title>Contacts | Mon profil</title>
 </head>
 <body>
 
@@ -31,28 +31,20 @@
 
     <div class="album py-5 bg-light">
         <div class="container">
-
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-                <c:forEach items="${contacts}" var="contact">
-                    <div class="col">
-                        <div class="card shadow-sm">
-                            <img src="${contact.pictureUrl}" alt="photo">
-                            <div class="card-body">
-                                <h3 class="card-text">${contact.firstname} ${contact.lastname}</h3>
-                                <%--<c:forEach items="${contact.authors}" var="author">
-                                    <h5 class="card-text">${author.firstname} ${author.lastname}</h5>
-                                </c:forEach>--%>
-                                <h5 class="card-text">${contact.job} chez ${contact.company}</h5>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="btn-group">
-                                        <a type="button" class="btn btn-sm btn-outline-secondary" href="${pageContext.request.contextPath}/contacts/details/${contact.id}">Voir</a>
-                                        <a type="button" class="btn btn-sm btn-outline-secondary" href="${pageContext.request.contextPath}/contacts/edit/${contact.id}">Modifier</a>
-                                    </div>
+                <div class="col">
+                    <div class="card shadow-sm">
+                        <img src="${user.pictureUrl}" alt="photo">
+                        <div class="card-body">
+                            <h3 class="card-text">${user.firstname} ${user.lastname}</h3>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">Modifier</button>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </c:forEach>
+                </div>
             </div>
         </div>
     </div>

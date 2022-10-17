@@ -123,6 +123,9 @@
                     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
                     <button class="btn my-2 text-white" style="background-color: darkslategray" type="submit">Enregistrer un nouveau contact</button>
                     <button class="btn my-2 text-white" style="background-color: darkslategray" type="reset">Annuler</button>
+                    <div>
+                        <a href="${pageContext.request.contextPath}/contacts/all" style="color: darkslategray">Retour à la liste</a>
+                    </div>
                 </form>
             </div>
         </div>
