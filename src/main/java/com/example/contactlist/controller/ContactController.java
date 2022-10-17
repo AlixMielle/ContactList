@@ -26,7 +26,7 @@ public class ContactController {
         List<Contact> contactList = contactService.findContactByName(keyword);
         model.addAttribute("contacts", contactList);
         model.addAttribute("keyword", keyword);
-        return "listcontactsView";
+        return "index";
     }
 
     @GetMapping("/details/{id}")

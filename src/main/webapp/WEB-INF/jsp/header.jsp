@@ -1,7 +1,7 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/src/main/resources/static/style.css">
@@ -55,9 +55,9 @@
             <div class="row navbar-brand d-flex align-items-center justify-content-around">
                 <div class="col-10">
                     <form action="${pageContext.request.contextPath}/contacts/all" class="navbar-brand d-flex justify-content-between" role="search">
-                        <input class="form-control me-2" type="search" name="keyword" value="${keyword}" id="keyword" placeholder="Search" aria-label="Search">
-                        <button class="navbar-toggler" type="submit"><i class="bi bi-search"></i></button>
-                        <button class="navbar-toggler" type="button" onclick="clearSearch()"><i class="bi bi-x-square"></i></button>
+                        <input class="form-control me-2" type="search" name="keyword" value="${keyword}" id="keyword" placeholder="Chercher un contact" aria-label="Search">
+                        <button class="navbar-toggler" type="submit">Rechercher</button>
+                        <button class="navbar-toggler" type="button" onclick="clearSearch()">Effacer</button>
                     </form>
                 </div>
                 <div class="col-2">

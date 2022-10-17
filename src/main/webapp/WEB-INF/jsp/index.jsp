@@ -23,7 +23,7 @@
                 <p class="lead text-muted">Faites de nouvelles rencontres et enregistrez-les simplement !</p>
                 <p>
                     <a href="${pageContext.request.contextPath}/contacts/all" class="btn my-2 text-white" style="background-color: darkslategray">Liste des contacts</a>
-                    <a href="${pageContext.request.contextPath}/books/add" class="btn my-2 text-white" style="background-color: lightcoral">Créer un contact</a>
+                    <a href="${pageContext.request.contextPath}/contacts/add" class="btn my-2 text-white" style="background-color: lightcoral">Ajouter un contact</a>
                 </p>
             </div>
         </div>
@@ -33,30 +33,21 @@
         <div class="container">
 
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-                <c:forEach items="${books}" var="book">
+                <c:forEach items="${contacts}" var="contact">
                     <div class="col">
                         <div class="card shadow-sm">
-                            <img src="${book.pictureUrl}" alt="photo">
+                            <img src="${contact.pictureUrl}" alt="photo">
                             <div class="card-body">
-                                <h3 class="card-text">${book.name}</h3>
-                                <c:forEach items="${book.authors}" var="author">
+                                <h3 class="card-text">${contact.firstname} ${contact.lastname}</h3>
+                                <%--<c:forEach items="${contact.authors}" var="author">
                                     <h5 class="card-text">${author.firstname} ${author.lastname}</h5>
-                                </c:forEach>
-                                <p class="card-text">${book.description}</p>
+                                </c:forEach>--%>
+                                <h5 class="card-text">${contact.job} chez ${contact.company}</h5>
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="btn-group">
-                                        <a type="button" class="btn btn-sm btn-outline-secondary" href="${pageContext.request.contextPath}/books/details/${book.id}">View</a>
-                                        <a type="button" class="btn btn-sm btn-outline-secondary" href="${pageContext.request.contextPath}/books/edit/${book.id}">Edit</a>
+                                        <a type="button" class="btn btn-sm btn-outline-secondary" href="${pageContext.request.contextPath}/contacts/details/${contact.id}">Voir</a>
+                                        <a type="button" class="btn btn-sm btn-outline-secondary" href="${pageContext.request.contextPath}/contacts/edit/${contact.id}">Modifier</a>
                                     </div>
-                                    <div>
-                                        <c:forEach var="i" begin="1" end="${book.note}" step="1">
-                                            <i class="fa-solid fa-star rating-color" style="color: lightcoral"></i>
-                                        </c:forEach>
-                                        <c:forEach var="i" begin="1" end="${5-book.note}" step="1">
-                                            <i class="fa-regular fa-star rating-color" style="color: lightcoral"></i>
-                                        </c:forEach>
-                                    </div>
-                                    <small class="text-muted">9 mins</small>
                                 </div>
                             </div>
                         </div>

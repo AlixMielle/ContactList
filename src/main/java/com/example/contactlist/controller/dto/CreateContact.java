@@ -3,8 +3,6 @@ package com.example.contactlist.controller.dto;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -23,10 +21,8 @@ public class CreateContact {
     private String job;
     private String note;
 
-    @Enumerated(EnumType.STRING)
-    private Enum familyLink;
+    private String link;
 
-    private List<Long> contactIds;
 
     public CreateContact() {
     }
@@ -111,19 +107,11 @@ public class CreateContact {
         this.note = note;
     }
 
-    public Enum getFamilyLink() {
-        return familyLink;
+    public String getLink() {
+        return link;
     }
 
-    public void setFamilyLink(Enum familyLink) {
-        this.familyLink = familyLink;
-    }
-
-    public List<Long> getContactIds() {
-        return contactIds;
-    }
-
-    public void setContactIds(List<Long> contactIds) {
-        this.contactIds = contactIds;
+    public void setLink(String link) {
+        this.link = link;
     }
 }

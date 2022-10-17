@@ -21,19 +21,19 @@ public class Contact {
     private String job;
     private String note;
 
-    @Enumerated(EnumType.STRING)
-    private Enum familyLink;
+    private String link;
 
-    @ManyToMany
-    @JoinTable(name="contact_link",
-            joinColumns = @JoinColumn(name = "contact1_fk"),
-            inverseJoinColumns = @JoinColumn(name = "contact2_fk"))
-    private List<Contact> contactLinkList = new ArrayList<>();
+    @ManyToOne
+    @JoinColumn(name = "contact_principal_id")
+    private Contact contactPrincipal;
+
+    @OneToMany(mappedBy= "contactPrincipal", cascade = CascadeType.ALL)
+    private List<Contact> contacts = new ArrayList<>();
 
     public Contact() {
     }
 
-    public Contact(String firstname, String lastname, LocalDate dateBirth, String email, String mobile, String pictureUrl, String company, String job, String note, Enum familyLink) {
+    public Contact(String firstname, String lastname, LocalDate dateBirth, String email, String mobile, String pictureUrl, String company, String job, String note, String link) {
         this.firstname = firstname;
         this.lastname = lastname;
         this.dateBirth = dateBirth;
@@ -43,7 +43,7 @@ public class Contact {
         this.company = company;
         this.job = job;
         this.note = note;
-        this.familyLink = familyLink;
+        this.link = link;
     }
 
     public Long getId() {
@@ -126,24 +126,32 @@ public class Contact {
         this.note = note;
     }
 
-    public Enum getFamilyLink() {
-        return familyLink;
+    public String getLink() {
+        return link;
     }
 
-    public void setFamilyLink(Enum familyLink) {
-        this.familyLink = familyLink;
+    public void setLink(String link) {
+        this.link = link;
     }
 
-    public List<Contact> getContactLinkList() {
-        return contactLinkList;
+    public Contact getContactPrincipal() {
+        return contactPrincipal;
+    }
+
+    public void setContactPrincipal(Contact contactPrincipal) {
+        this.contactPrincipal = contactPrincipal;
+    }
+
+    public List<Contact> getcontacts() {
+        return contacts;
     }
 
     public void setContactLinkList(List<Contact> contactLinkList) {
-        this.contactLinkList = contactLinkList;
+        this.contacts = contactLinkList;
     }
 
-    public void addContact(Contact contact){
-        this.contactLinkList.add(contact);
-        contact.getContactLinkList().add(this);
+    public void addContact(Contact contactPrincipal) {
+        this.contacts.add(contactPrincipal);
+        contactPrincipal.getcontacts().add(this);
     }
 }

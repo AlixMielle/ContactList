@@ -7,6 +7,7 @@ import com.example.contactlist.repository.entity.Contact;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -38,10 +39,10 @@ public class ContactService {
     }
 
     public void addContact(CreateContact createContact) {
-        List<Long> contactIds = createContact.getContactIds();
+        //List<Long> contactIds = createContact.getContactIds();
 
         //demande de chercher les objets avec les id demandés
-        List<Contact> contactList = (List<Contact>) contactRepository.findAllById(contactIds);
+        //List<Contact> contactList = (List<Contact>) contactRepository.findAllById(contactIds);
 
         Contact c = new Contact();
         c.setFirstname(createContact.getFirstname());
@@ -52,8 +53,7 @@ public class ContactService {
         c.setCompany(createContact.getCompany());
         c.setJob(createContact.getJob());
         c.setNote(createContact.getNote());
-        c.setFamilyLink(createContact.getFamilyLink());
-        c.setContactLinkList(contactList);
+        c.setLink(createContact.getLink());
 
         MultipartFile picture = createContact.getPictureFile();
         if (picture == null || picture.isEmpty()){
@@ -83,7 +83,7 @@ public class ContactService {
         contact.setCompany(editContact.getCompany());
         contact.setJob(editContact.getJob());
         contact.setNote(editContact.getNote());
-        contact.setFamilyLink(editContact.getFamilyLink());
+        contact.setLink(editContact.getLink());
         this.contactRepository.save(contact);
     }
 
